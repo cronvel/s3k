@@ -44,10 +44,13 @@ describe( "Basic test" , function() {
 	
 	it( "should put and get some data" , async () => {
 		var s3 = new S3K( config ) ;
-		//var result = await s3.putObject( { Key: "bob.txt" , Body: "OMG, some bob content!\n" } ) ;
+		var result = await s3.putObject( { Key: "bob.txt" , Body: "OMG, some bob content!\n" } ) ;
 		//console.log( "result:" , result ) ;
 		var data = await s3.getObject( { Key: "bob.txt" } ) ;
-		console.log( data ) ;
+		//console.log( data ) ;
+		var content = data.Body.toString() ;
+		//console.log( content ) ;
+		expect( content ).to.be( "OMG, some bob content!\n" ) ;
 	} ) ;
 } ) ;
 
