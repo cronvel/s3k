@@ -1,0 +1,47 @@
+{
+  "name": "s3k",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "description": "S3 utilities.",
+  "main": "lib/S3K.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.241.1",
+    "seventh": "^0.7.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "tea-time -R dot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cronvel/s3k.git"
+  },
+  "keywords": [
+    "http",
+    "request"
+  ],
+  "author": "Cédric Ronvel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cronvel/s3k/issues"
+  },
+  "config": {
+    "tea-time": {
+      "coverDir": [
+        "lib"
+      ]
+    }
+  },
+  "copyright": {
+    "title": "S3K",
+    "years": [
+      2018
+    ],
+    "owner": "Cédric Ronvel"
+  }
+}
