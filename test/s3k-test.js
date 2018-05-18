@@ -105,7 +105,7 @@ describe( "Operation on objects" , function() {
 		}
 		catch ( error ) {
 			console.log( 'error:' , error ) ;
-			expect( error ).to.be.partially.like( { message: 'NoSuchKey' } ) ;
+			expect( error ).to.be.partially.like( { statusCode: 404 , code: 'NoSuchKey' } ) ;
 		}
 	} ) ;
 } ) ;
