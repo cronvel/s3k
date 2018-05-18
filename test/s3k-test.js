@@ -40,26 +40,27 @@ describe( "Access Control" , function() {
 		var s3 = new S3K( config ) ;
 		
 		var result = await s3.setBucketAcl( {
-			ACL: 'private' ,
 			AccessControlPolicy: {
+				Owner: {
+					//DisplayName: "2802192",
+					ID: "2802192"
+				},
 				Grants: [
 					{
 						Grantee: {
-							Type: 'CanonicalUser' ,
-							ID: config.accessKeyId ,
-						} ,
-						Permission: 'FULL_CONTROL'
+							//DisplayName: "2802192",
+							ID: "2802192",
+							Type: "CanonicalUser"
+						},
+						Permission: "FULL_CONTROL"
 					}
-				] ,
-				Owner: {
-					ID: config.accessKeyId
-				}
+				]
 			}
 		} ) ;
 		console.log( result ) ;
 		
 		var data = await s3.getBucketAcl() ;
-		console.log( data ) ;
+		console.log( JSON.stringify( data , true , '  ' ) ) ;
 	} ) ;
 } ) ;
 
@@ -83,6 +84,29 @@ describe( "Operation on objects" , function() {
 		var content = data.Body.toString() ;
 		//console.log( content ) ;
 		expect( content ).to.be( "OMG, some bob content!\n" ) ;
+	} ) ;
+	
+	it( "should put-get-delete-get some data" , async () => {
+		var s3 = new S3K( config ) ;
+		var result = await s3.putObject( { Key: "bob2.txt" , Body: "OMG, more bob content!\n" } ) ;
+		//console.log( "result:" , result ) ;
+		var data = await s3.getObject( { Key: "bob2.txt" } ) ;
+		//console.log( data ) ;
+		var content = data.Body.toString() ;
+		//console.log( content ) ;
+		expect( content ).to.be( "OMG, more bob content!\n" ) ;
+		
+		var result = await s3.deleteObject( { Key: "bob2.txt" } ) ;
+		//console.log( "result:" , result ) ;
+		
+		try {
+			await s3.getObject( { Key: "bob2.txt" } ) ;
+			expect().fail( 'Should throw' ) ;
+		}
+		catch ( error ) {
+			console.log( 'error:' , error ) ;
+			expect( error ).to.be.partially.like( { message: 'NoSuchKey' } ) ;
+		}
 	} ) ;
 } ) ;
 
