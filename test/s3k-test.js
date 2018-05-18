@@ -28,12 +28,44 @@
 
 
 
+var Promise = require( 'seventh' ) ;
 var S3K = require( '..' ) ;
 var config = require( '../config.local.json' ) ;
 
 
 
-describe( "Basic test" , function() {
+describe( "Access Control" , function() {
+	
+	it( "should set (put) and get bucket ACL" , async () => {
+		var s3 = new S3K( config ) ;
+		
+		var result = await s3.setBucketAcl( {
+			ACL: 'private' ,
+			AccessControlPolicy: {
+				Grants: [
+					{
+						Grantee: {
+							Type: 'CanonicalUser' ,
+							ID: config.accessKeyId ,
+						} ,
+						Permission: 'FULL_CONTROL'
+					}
+				] ,
+				Owner: {
+					ID: config.accessKeyId
+				}
+			}
+		} ) ;
+		console.log( result ) ;
+		
+		var data = await s3.getBucketAcl() ;
+		console.log( data ) ;
+	} ) ;
+} ) ;
+
+
+
+describe( "Operation on objects" , function() {
 	
 	it( "should list objects" , async () => {
 		var s3 = new S3K( config ) ;
