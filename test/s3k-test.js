@@ -31,37 +31,21 @@
 var Promise = require( 'seventh' ) ;
 var S3K = require( '..' ) ;
 var config = require( '../config.local.json' ) ;
+var proxyConfig = require( '../proxy-config.local.json' ) ;
+var proxy ;
 
 
 
-describe( "Access Control" , function() {
+before( function( done ) {
+	var args = require( 'minimist' )( process.argv.slice( 2 ) ) ;
 	
-	it( "should set (put) and get bucket ACL" , async () => {
-		var s3 = new S3K( config ) ;
-		
-		var result = await s3.setBucketAcl( {
-			AccessControlPolicy: {
-				Owner: {
-					//DisplayName: "2802192",
-					ID: "2802192"
-				},
-				Grants: [
-					{
-						Grantee: {
-							//DisplayName: "2802192",
-							ID: "2802192",
-							Type: "CanonicalUser"
-						},
-						Permission: "FULL_CONTROL"
-					}
-				]
-			}
-		} ) ;
-		console.log( result ) ;
-		
-		var data = await s3.getBucketAcl() ;
-		console.log( JSON.stringify( data , true , '  ' ) ) ;
-	} ) ;
+	if ( args.proxy ) {
+		proxy = S3K.proxy.create( proxyConfig ) ;
+		//console.log( proxy ) ;
+		config.endpoint = proxy.endpoint ;
+	}
+	
+	done() ;
 } ) ;
 
 
@@ -109,4 +93,39 @@ describe( "Operation on objects" , function() {
 		}
 	} ) ;
 } ) ;
+
+
+
+/*
+describe( "Access Control" , function() {
+	
+	it( "should set (put) and get bucket ACL" , async () => {
+		var s3 = new S3K( config ) ;
+		
+		var result = await s3.setBucketAcl( {
+			AccessControlPolicy: {
+				Owner: {
+					//DisplayName: "2802192",
+					ID: "2802192"
+				},
+				Grants: [
+					{
+						Grantee: {
+							//DisplayName: "2802192",
+							ID: "2802192",
+							Type: "CanonicalUser"
+						},
+						Permission: "FULL_CONTROL"
+					}
+				]
+			}
+		} ) ;
+		console.log( result ) ;
+		
+		var data = await s3.getBucketAcl() ;
+		console.log( JSON.stringify( data , true , '  ' ) ) ;
+	} ) ;
+} ) ;
+*/
+
 

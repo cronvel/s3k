@@ -1,6 +1,6 @@
 {
   "name": "s3k",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -9,9 +9,15 @@
   "directories": {
     "test": "test"
   },
+  "bin": {
+    "s3k-proxy": "./bin/s3k-proxy"
+  },
   "dependencies": {
     "aws-sdk": "^2.241.1",
-    "seventh": "^0.7.5"
+    "http-proxy": "^1.17.0",
+    "minimist": "^1.2.0",
+    "seventh": "^0.7.5",
+    "terminal-kit": "^1.17.5"
   },
   "devDependencies": {},
   "scripts": {
