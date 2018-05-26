@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.241.1",
+    "aws4": "^1.7.0",
     "http-proxy": "^1.17.0",
     "minimist": "^1.2.0",
     "seventh": "^0.7.5",
