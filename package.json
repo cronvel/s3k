@@ -15,6 +15,7 @@
   "dependencies": {
     "aws-sdk": "^2.241.1",
     "aws4": "^1.7.0",
+    "hash-kit": "^0.3.2",
     "http-proxy": "^1.17.0",
     "minimist": "^1.2.0",
     "seventh": "^0.7.5",
