@@ -1,0 +1,19 @@
+{
+	"port": 53720 ,
+	"target": "http://ams3.digitaloceanspaces.com" ,
+	"accessKeyId": "youraccesskeyid" ,
+	"secretAccessKey": "yoursecretaccesskey" ,
+	"clients" : {
+		"aclientaccessid": {
+			"secretAccessKey": "itssecretkey",
+			"buckets": true
+		} ,
+		"anotherclientaccessid": {
+			"secretAccessKey": "itssecretkey",
+			"buckets": {
+				"bucket1": "r",
+				"bucket2": "rw"
+			}
+		}
+	}
+}

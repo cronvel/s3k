@@ -1,0 +1,8 @@
+{
+	"endpoint": "http://ams3.digitaloceanspaces.com" ,
+	"accessKeyId": "youraccesskey" ,
+	"secretAccessKey": "yoursecretaccesskey" ,
+	"bucket": "yourbucket" ,
+	"delimiter": "/" ,
+	"prefix": "test/"
+}
