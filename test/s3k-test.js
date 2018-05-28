@@ -29,7 +29,7 @@
 
 
 var Promise = require( 'seventh' ) ;
-var S3K = require( '..' ) ;
+var S3k = require( '..' ) ;
 var config = require( '../config.local.json' ) ;
 var proxyConfig = require( '../proxy-config.local.json' ) ;
 var proxy ;
@@ -40,7 +40,8 @@ before( function( done ) {
 	var args = require( 'minimist' )( process.argv.slice( 2 ) ) ;
 	
 	if ( args.proxy ) {
-		proxy = S3K.proxy.create( proxyConfig ) ;
+		proxy = new S3k.Proxy( proxyConfig ) ;
+		proxy.startServer() ;
 		//console.log( proxy ) ;
 		config.endpoint = proxy.endpoint ;
 	}
@@ -53,14 +54,14 @@ before( function( done ) {
 describe( "Operation on objects" , function() {
 	
 	it( "should list objects" , async () => {
-		var s3 = new S3K( config ) ;
+		var s3 = new S3k( config ) ;
 		var data = await s3.listObjects() ;
 		
 		console.log( data ) ;
 	} ) ;
 	
 	it( "should put and get some data" , async () => {
-		var s3 = new S3K( config ) ;
+		var s3 = new S3k( config ) ;
 		var result = await s3.putObject( { Key: "bob.txt" , Body: "OMG, some bob content!\n" } ) ;
 		//console.log( "result:" , result ) ;
 		var data = await s3.getObject( { Key: "bob.txt" } ) ;
@@ -71,7 +72,7 @@ describe( "Operation on objects" , function() {
 	} ) ;
 	
 	it( "should put-get-delete-get some data" , async () => {
-		var s3 = new S3K( config ) ;
+		var s3 = new S3k( config ) ;
 		var result = await s3.putObject( { Key: "bob2.txt" , Body: "OMG, more bob content!\n" } ) ;
 		//console.log( "result:" , result ) ;
 		var data = await s3.getObject( { Key: "bob2.txt" } ) ;
@@ -100,7 +101,7 @@ describe( "Operation on objects" , function() {
 describe( "Access Control" , function() {
 	
 	it( "should set (put) and get bucket ACL" , async () => {
-		var s3 = new S3K( config ) ;
+		var s3 = new S3k( config ) ;
 		
 		var result = await s3.setBucketAcl( {
 			AccessControlPolicy: {

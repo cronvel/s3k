@@ -5,7 +5,7 @@
     "node": ">=6.0.0"
   },
   "description": "S3 utilities.",
-  "main": "lib/S3K.js",
+  "main": "lib/S3k.js",
   "directories": {
     "test": "test"
   },
