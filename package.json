@@ -19,6 +19,7 @@
     "http-proxy": "^1.17.0",
     "logfella": "^0.3.59",
     "minimist": "^1.2.0",
+    "request": "^2.87.0",
     "seventh": "^0.7.6",
     "string-kit": "^0.7.4",
     "terminal-kit": "^1.17.6"
