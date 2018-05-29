@@ -32,13 +32,38 @@ var Promise = require( 'seventh' ) ;
 var S3k = require( '..' ) ;
 var config = require( '../config.local.json' ) ;
 var proxyConfig = require( '../proxy-config.local.json' ) ;
+var Logfella = require( 'logfella' ) ;
+
+var args = require( 'minimist' )( process.argv.slice( 2 ) ) ;
+
+if ( args.debug ) {
+	Logfella.global.setGlobalConfig( {
+		minLevel: 'debug' ,
+		overrideConsole: false ,
+		transports: [
+			{
+				type: 'console' , timeFormatter: 'time' , color: true , output: 'stderr'
+			}
+		]
+	} ) ;
+}
+else {
+	Logfella.global.setGlobalConfig( {
+		minLevel: 'info' ,
+		overrideConsole: false ,
+		transports: [
+			{
+				type: 'console' , timeFormatter: 'time' , color: true , output: 'stderr'
+			}
+		]
+	} ) ;
+}
+
 var proxy ;
 
 
 
 before( function( done ) {
-	var args = require( 'minimist' )( process.argv.slice( 2 ) ) ;
-	
 	if ( args.proxy ) {
 		proxy = new S3k.Proxy( proxyConfig ) ;
 		proxy.startServer() ;
@@ -71,7 +96,9 @@ describe( "Operation on objects" , function() {
 		expect( content ).to.be( "OMG, some bob content!\n" ) ;
 	} ) ;
 	
-	it( "should put-get-delete-get some data" , async () => {
+	it( "should put-get-delete-get some data" , async function() {
+		this.timeout( 4000 ) ;
+		
 		var s3 = new S3k( config ) ;
 		var result = await s3.putObject( { Key: "bob2.txt" , Body: "OMG, more bob content!\n" } ) ;
 		//console.log( "result:" , result ) ;

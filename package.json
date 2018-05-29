@@ -13,13 +13,15 @@
     "s3k-proxy": "./bin/s3k-proxy"
   },
   "dependencies": {
-    "aws-sdk": "^2.241.1",
+    "aws-sdk": "^2.247.1",
     "aws4": "^1.7.0",
     "hash-kit": "^0.3.2",
     "http-proxy": "^1.17.0",
+    "logfella": "^0.3.59",
     "minimist": "^1.2.0",
-    "seventh": "^0.7.5",
-    "terminal-kit": "^1.17.5"
+    "seventh": "^0.7.6",
+    "string-kit": "^0.7.4",
+    "terminal-kit": "^1.17.6"
   },
   "devDependencies": {},
   "scripts": {
