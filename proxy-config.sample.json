@@ -6,7 +6,7 @@
 	"clients" : {
 		"aclientaccessid": {
 			"secretAccessKey": "itssecretkey",
-			"buckets": true
+			"grantAll": true
 		} ,
 		"anotherclientaccessid": {
 			"secretAccessKey": "itssecretkey",
