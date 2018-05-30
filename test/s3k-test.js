@@ -30,8 +30,8 @@
 
 var Promise = require( 'seventh' ) ;
 var S3k = require( '..' ) ;
-var config = require( '../config.local.json' ) ;
-var proxyConfig = require( '../proxy-config.local.json' ) ;
+var config ;
+var proxyConfig ;
 var Logfella = require( 'logfella' ) ;
 
 var args = require( 'minimist' )( process.argv.slice( 2 ) ) ;
@@ -65,10 +65,15 @@ var proxy ;
 
 before( function( done ) {
 	if ( args.proxy ) {
+		config = require( '../config2.local.json' ) ;
+		proxyConfig = require( '../proxy-config.local.json' ) ;
 		proxy = new S3k.Proxy( proxyConfig ) ;
 		proxy.startServer() ;
 		//console.log( proxy ) ;
 		config.endpoint = proxy.endpoint ;
+	}
+	else {
+		config = require( '../config.local.json' ) ;
 	}
 	
 	done() ;
