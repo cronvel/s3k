@@ -70,7 +70,6 @@ before( function( done ) {
 		proxy = new S3k.Proxy( proxyConfig ) ;
 		proxy.startServer() ;
 		//console.log( proxy ) ;
-		config.endpoint = proxy.endpoint ;
 	}
 	else {
 		config = require( '../config.local.json' ) ;
