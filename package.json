@@ -18,12 +18,13 @@
     "aws3": "^0.2.1",
     "aws4": "^1.7.0",
     "hash-kit": "^0.3.2",
-    "logfella": "^1.0.4",
+    "logfella": "^1.0.5",
     "minimist": "^1.2.0",
     "request": "^2.87.0",
-    "seventh": "^0.7.8",
-    "string-kit": "^0.7.7",
-    "terminal-kit": "^1.17.7"
+    "seventh": "^0.7.13",
+    "stream-kit": "^0.2.3",
+    "string-kit": "^0.7.10",
+    "terminal-kit": "^1.17.11"
   },
   "devDependencies": {},
   "scripts": {
