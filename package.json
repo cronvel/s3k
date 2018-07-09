@@ -13,7 +13,7 @@
     "s3k-proxy": "./bin/s3k-proxy"
   },
   "dependencies": {
-    "aws-sdk": "^2.252.1",
+    "aws-sdk": "^2.270.1",
     "aws2": "^0.2.1",
     "aws3": "^0.2.1",
     "aws4": "^1.7.0",
