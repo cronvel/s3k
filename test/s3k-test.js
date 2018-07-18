@@ -30,6 +30,8 @@
 
 var Promise = require( 'seventh' ) ;
 var S3k = require( '..' ) ;
+var fs = require( 'fs' ) ;
+var path = require( 'path' ) ;
 var config ;
 var proxyConfig ;
 var Logfella = require( 'logfella' ) ;
@@ -99,6 +101,49 @@ describe( "Operation on objects" , function() {
 		//console.log( content ) ;
 		expect( content ).to.be( "OMG, some bob content!\n" ) ;
 	} ) ;
+	
+	/*
+	it( "should put and get some streamed data (tiny)" , async function() {
+		this.timeout( 10000 ) ;
+		var s3 = new S3k( config ) ;
+		var filePath = path.join( __dirname , '../sample/bob.txt' ) ;
+		console.log( fs.readFileSync( filePath , 'utf8' ) ) ;
+		var result = await s3.putObject( { Key: "bob.txt" , Body: fs.createReadStream( filePath ) } ) ;
+		//var result = await s3.putObject( { Key: "bob.txt" , Body: fs.readFileSync( filePath , 'utf8' ) } ) ;
+		//console.log( "result:" , result ) ;
+		var data = await s3.getObject( { Key: "bob.txt" } ) ;
+		//console.log( data ) ;
+		var content = data.Body.toString() ;
+		//console.log( content ) ;
+		expect( content ).to.be( fs.readFileSync( filePath , 'utf8' ) ) ;
+	} ) ;
+	
+	it( "should put and get some streamed data (100KB)" , async function() {
+		this.timeout( 10000000 ) ;
+		var s3 = new S3k( config ) ;
+		var filePath = path.join( __dirname , '../sample/sample.jpg' ) ;
+		var result = await s3.putObject( { Key: "sample.jpg" , Body: fs.createReadStream( filePath ) } ) ;
+		//console.log( "result:" , result ) ;
+		var data = await s3.getObject( { Key: "sample.jpg" } ) ;
+		//console.log( data ) ;
+		var content = data.Body.toString() ;
+		//console.log( content ) ;
+		expect( content ).to.be( fs.readFileSync( filePath , 'utf8' ) ) ;
+	} ) ;
+	
+	it( "should put and get some streamed data (1MB)" , async function() {
+		this.timeout( 10000000 ) ;
+		var s3 = new S3k( config ) ;
+		var filePath = path.join( __dirname , '../sample/sample.mp4' ) ;
+		var result = await s3.putObject( { Key: "sample.mp4" , Body: fs.createReadStream( filePath ) } ) ;
+		//console.log( "result:" , result ) ;
+		var data = await s3.getObject( { Key: "sample.mp4" } ) ;
+		//console.log( data ) ;
+		var content = data.Body.toString() ;
+		//console.log( content ) ;
+		expect( content ).to.be( fs.readFileSync( filePath , 'utf8' ) ) ;
+	} ) ;
+	//*/
 	
 	it( "should put-get-delete-get some data" , async function() {
 		this.timeout( 4000 ) ;
