@@ -1,6 +1,6 @@
 {
   "name": "s3k",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -18,7 +18,7 @@
     "aws3": "^0.2.1",
     "aws4": "^1.7.0",
     "hash-kit": "^0.3.2",
-    "logfella": "^1.0.6",
+    "logfella": "^1.0.7",
     "minimist": "^1.2.0",
     "request": "^2.87.0",
     "seventh": "^0.7.13",
