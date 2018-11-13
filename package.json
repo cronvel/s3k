@@ -13,18 +13,19 @@
     "s3k-proxy": "./bin/s3k-proxy"
   },
   "dependencies": {
-    "aws-sdk": "^2.276.1",
+    "aws-sdk": "^2.354.0",
     "aws2": "^0.2.1",
     "aws3": "^0.2.1",
-    "aws4": "^1.7.0",
+    "aws4": "^1.8.0",
     "hash-kit": "^0.3.2",
-    "logfella": "^1.0.7",
+    "logfella": "^1.0.10",
     "minimist": "^1.2.0",
-    "request": "^2.87.0",
-    "seventh": "^0.7.13",
-    "stream-kit": "^0.2.3",
-    "string-kit": "^0.7.12",
-    "terminal-kit": "^1.17.12"
+    "request": "^2.88.0",
+    "seventh": "^0.7.17",
+    "stream-kit": "^0.2.7",
+    "string-kit": "^0.8.15",
+    "terminal-kit": "^1.26.4",
+    "utterminal": "^0.5.14"
   },
   "devDependencies": {},
   "scripts": {
