@@ -24,8 +24,8 @@
     "seventh": "^0.7.17",
     "stream-kit": "^0.2.7",
     "string-kit": "^0.8.15",
-    "terminal-kit": "^1.26.4",
-    "utterminal": "^0.5.14"
+    "terminal-kit": "^1.26.5",
+    "utterminal": "^0.5.18"
   },
   "devDependencies": {},
   "scripts": {
