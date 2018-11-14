@@ -26,7 +26,7 @@
     "stream-kit": "^0.2.7",
     "string-kit": "^0.8.15",
     "terminal-kit": "^1.26.5",
-    "utterminal": "^0.5.18"
+    "utterminal": "^0.5.20"
   },
   "devDependencies": {},
   "scripts": {
