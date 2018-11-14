@@ -1,7 +1,7 @@
 {
 	"port": 53720 ,
 	"hostname": "spaces.localhost",
-	"target": "http://ams3.digitaloceanspaces.com" ,
+	"target": "https://ams3.digitaloceanspaces.com" ,
 	"accessKeyId": "youraccesskeyid" ,
 	"secretAccessKey": "yoursecretaccesskey" ,
 	"clients" : {
