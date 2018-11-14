@@ -32,52 +32,25 @@ var Promise = require( 'seventh' ) ;
 var S3k = require( '..' ) ;
 var fs = require( 'fs' ) ;
 var path = require( 'path' ) ;
-var config ;
-var proxyConfig ;
+var kungFig = require( 'kung-fig' ) ;
+
 var Logfella = require( 'logfella' ) ;
 
-var args = require( 'minimist' )( process.argv.slice( 2 ) ) ;
-
-if ( args.debug ) {
-	Logfella.global.setGlobalConfig( {
-		minLevel: 'debug' ,
-		overrideConsole: false ,
-		transports: [
-			{
-				type: 'console' , timeFormatter: 'time' , color: true , output: 'stderr'
-			}
-		]
-	} ) ;
-}
-else {
-	Logfella.global.setGlobalConfig( {
-		minLevel: 'info' ,
-		overrideConsole: false ,
-		transports: [
-			{
-				type: 'console' , timeFormatter: 'time' , color: true , output: 'stderr'
-			}
-		]
-	} ) ;
-}
-
-var proxy ;
+var config , proxyConfig , proxy ;
 
 
 
-before( function( done ) {
-	if ( args.proxy ) {
-		config = require( '../config2.local.json' ) ;
-		proxyConfig = require( '../proxy-config.local.json' ) ;
+before( () => {
+	if ( teaTime.cliManager.parsedArgs.proxy ) {
+		config = require( '../conf/s3-proxy.local.json' ) ;
+		proxyConfig = kungFig.load( __dirname + '/../conf/proxy.local.kfg' ) ;
 		proxy = new S3k.Proxy( proxyConfig ) ;
 		proxy.startServer() ;
 		//console.log( proxy ) ;
 	}
 	else {
-		config = require( '../config.local.json' ) ;
+		config = require( '../conf/s3.local.json' ) ;
 	}
-	
-	done() ;
 } ) ;
 
 

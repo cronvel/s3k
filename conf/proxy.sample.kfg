@@ -13,13 +13,13 @@ clients:
 			bucket1: r
 			bucket2: rw
 
-# TODO
-
-# Type is either s3 or web, web create a regular web server, not a s3-like server, suitable for things like <img> tags
-type: s3
-
 # Anonymous user access, when no key are provided, not sure if it makes sense for the 's3' type of proxy
 anonymous:
 	buckets:
 		bucket1: rw
+
+# TODO
+
+# Type is either 's3' or 'web', 'web' creates a regular web server, not a s3-like server, suitable for things like <img> tags
+type: s3
 
