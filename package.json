@@ -22,7 +22,7 @@
     "lazyness": "^1.0.1",
     "logfella": "^1.0.10",
     "request": "^2.88.0",
-    "server-kit": "^0.9.2",
+    "server-kit": "^0.9.3",
     "seventh": "^0.7.17",
     "stream-kit": "^0.2.7",
     "string-kit": "^0.8.15",
