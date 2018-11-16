@@ -23,3 +23,6 @@ anonymous:
 # Type is either 's3' or 'web', 'web' creates a regular web server, not a s3-like server, suitable for things like <img> tags
 type: s3
 
+# This is a token back-end, it only support mongodb ATM
+tokenBackend: mongodb://localhost:27017/s3k-proxy/tokens
+
