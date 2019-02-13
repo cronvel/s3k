@@ -1,6 +1,6 @@
 {
   "name": "s3k",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -13,7 +13,6 @@
     "s3k-proxy": "./bin/s3k-proxy"
   },
   "dependencies": {
-    "archiver": "^3.0.0",
     "aws-sdk": "^2.400.0",
     "aws2": "^0.2.1",
     "aws3": "^0.2.1",
@@ -29,7 +28,8 @@
     "stream-kit": "^0.2.7",
     "string-kit": "^0.9.1",
     "terminal-kit": "^1.26.11",
-    "utterminal": "^0.5.29"
+    "utterminal": "^0.5.29",
+    "yazl": "^2.5.1"
   },
   "devDependencies": {},
   "scripts": {
