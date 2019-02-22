@@ -1,8 +1,17 @@
 port: 53720
 hostname: spaces.localhost
+
 target: https://ams3.digitaloceanspaces.com
 accessKeyId: youraccesskeyid
 secretAccessKey: yoursecretaccesskey
+
+# If present, use a differents target and keys for each bucket 
+bucketTargets:
+	bucket1:
+		target: https://ams3.digitaloceanspaces.com
+		accessKeyId: youraccesskeyid
+		secretAccessKey: yoursecretaccesskey
+
 clients:
 	aclientaccessid:
 		secretAccessKey: itssecretkey
@@ -18,11 +27,10 @@ anonymous:
 	buckets:
 		bucket1: rw
 
-# TODO
-
 # Type is either 's3' or 'web', 'web' creates a regular web server, not a s3-like server, suitable for things like <img> tags
 type: s3
 
 # This is a token back-end, it only support mongodb ATM
+# Works only for type:web
 tokenBackend: mongodb://localhost:27017/s3k-proxy/tokens
 
