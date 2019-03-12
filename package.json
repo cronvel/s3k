@@ -1,6 +1,6 @@
 {
   "name": "s3k",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -13,22 +13,22 @@
     "s3k-proxy": "./bin/s3k-proxy"
   },
   "dependencies": {
-    "aws-sdk": "^2.400.0",
+    "aws-sdk": "^2.419.0",
     "aws2": "^0.2.1",
     "aws3": "^0.2.1",
     "aws4": "^1.8.0",
     "hash-kit": "^0.3.2",
-    "kung-fig": "^0.50.0",
+    "kung-fig": "^0.51.0",
     "lazyness": "^1.1.1",
     "logfella": "^1.1.5",
     "request": "^2.88.0",
-    "roots-db": "^0.19.1",
+    "roots-db": "^0.19.4",
     "server-kit": "^0.9.7",
     "seventh": "^0.7.18",
     "stream-kit": "^0.2.7",
     "string-kit": "^0.9.1",
-    "terminal-kit": "^1.26.11",
-    "utterminal": "^0.5.29",
+    "terminal-kit": "^1.27.0",
+    "utterminal": "^0.5.30",
     "yazl": "^2.5.1"
   },
   "devDependencies": {},
