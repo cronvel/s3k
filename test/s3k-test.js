@@ -64,7 +64,9 @@ describe( "Operation on objects" , function() {
 		console.log( data ) ;
 	} ) ;
 	
-	it( "should put and get some data" , async () => {
+	it( "should put and get some data" , async function() {
+		this.timeout( 3000 ) ;
+		
 		var s3 = new S3k( config ) ;
 		var result = await s3.putObject( { Key: "bob.txt" , Body: "OMG, some bob content!\n" } ) ;
 		//console.log( "result:" , result ) ;
@@ -73,6 +75,31 @@ describe( "Operation on objects" , function() {
 		var content = data.Body.toString() ;
 		//console.log( content ) ;
 		expect( content ).to.be( "OMG, some bob content!\n" ) ;
+	} ) ;
+	
+	it( "should put and get some streamed data" , async function() {
+		this.timeout( 3000 ) ;
+		
+		var content = '' ,
+			count = 0 ,
+			originalContent = "OMG, some bob content!\n".repeat( 3000 ) ;
+		
+		var s3 = new S3k( config ) ;
+		var result = await s3.putObject( { Key: "bob.txt" , Body: originalContent } ) ;
+		//console.log( "result:" , result ) ;
+		var stream = s3.getObjectStream( { Key: "bob.txt" } ) ;
+		
+		return new Promise( ( resolve , reject ) => {
+			stream.on( 'data' , chunk => {
+				console.log( "received chunk #" + ( count ++ ) ) ;
+				content += chunk.toString()
+			} ) ;
+			stream.on( 'end' , () => {
+				//console.log( content ) ;
+				expect( content ).to.be( originalContent ) ;
+				resolve() ;
+			} ) ;
+		} ) ;
 	} ) ;
 	
 	/*
