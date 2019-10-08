@@ -49,7 +49,7 @@ before( () => {
 		//console.log( proxy ) ;
 	}
 	else {
-		config = require( '../conf/s3.local.json' ) ;
+		config = kungFig.load( __dirname + '/../conf/s3-unit-test.local.kfg' ) ;
 	}
 } ) ;
 
@@ -58,7 +58,7 @@ before( () => {
 describe( "Operation on objects" , function() {
 	
 	it( "should list objects" , async function() {
-		this.timeout( 3000 ) ;
+		this.timeout( 5000 ) ;
 		
 		var s3 = new S3k( config ) ;
 		var data = await s3.listObjects() ;
@@ -67,7 +67,7 @@ describe( "Operation on objects" , function() {
 	} ) ;
 	
 	it( "should put and get some data" , async function() {
-		this.timeout( 4000 ) ;
+		this.timeout( 7000 ) ;
 		
 		var s3 = new S3k( config ) ;
 		var result = await s3.putObject( { Key: "bob.txt" , Body: "OMG, some bob content!\n" } ) ;
@@ -80,7 +80,7 @@ describe( "Operation on objects" , function() {
 	} ) ;
 	
 	it( "should put and get some streamed data" , async function() {
-		this.timeout( 4000 ) ;
+		this.timeout( 7000 ) ;
 		
 		var content = '' ,
 			count = 0 ,
@@ -148,7 +148,7 @@ describe( "Operation on objects" , function() {
 	//*/
 	
 	it( "should put-get-delete-get some data" , async function() {
-		this.timeout( 5000 ) ;
+		this.timeout( 10000 ) ;
 		
 		var s3 = new S3k( config ) ;
 		var result = await s3.putObject( { Key: "bob2.txt" , Body: "OMG, more bob content!\n" } ) ;
