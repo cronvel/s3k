@@ -1,8 +1,8 @@
 {
   "name": "s3k",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=14.15.0"
   },
   "description": "S3 utilities.",
   "main": "lib/S3k.js",
