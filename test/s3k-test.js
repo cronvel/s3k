@@ -1,7 +1,7 @@
 /*
 	S3K
 
-	Copyright (c) 2018 - 2020 Cédric Ronvel
+	Copyright (c) 2018 - 2021 Cédric Ronvel
 
 	The MIT License (MIT)
 
